@@ -1,15 +1,18 @@
+
 name: Find model castings
 
 'on':
-   workflow_dispatch:
-   schedule:
+  workflow_dispatch:
+  schedule:
     - cron: "17 * * * *"
+
 jobs:
   monitor:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -21,5 +24,5 @@ jobs:
       - name: Search Threads
         run: python monitor.py
         env:
-           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
